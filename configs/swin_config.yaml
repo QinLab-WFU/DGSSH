@@ -1,0 +1,25 @@
+MODEL:
+  TYPE: swin
+  NAME: hash_finetune
+  DROP_PATH_RATE: 0.2  # origin 0.5
+  NUM_CLASSES: 30
+  hash_length: 64
+  alph_param: 20
+  beta_param: 200
+  margin: 10
+  SWIN:
+    EMBED_DIM: 96
+    DEPTHS: [ 2, 2, 6, 2 ]
+    NUM_HEADS: [ 3, 6, 12, 24 ]
+    WINDOW_SIZE: 7
+TRAIN:
+  EPOCHS: 50
+  WARMUP_EPOCHS: 5
+  WEIGHT_DECAY: 1e-8
+  BASE_LR: 2e-05
+  WARMUP_LR: 2e-08
+  MIN_LR: 2e-07
+  TRIPLET_STRATEGY: batch_corrective
+DATA:
+  NUM_WORKERS: 8
+  DATASET: AID
